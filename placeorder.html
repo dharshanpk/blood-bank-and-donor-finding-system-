@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Order</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Place Your Donor Blood Request</h2>
+
+    <form id="orderForm" class="form">
+      <label for="bloodType">Type of Blood:</label>
+      <select id="bloodType" name="bloodType">
+        <option value="rh_positive">Rh Positive</option>
+        <option value="rh_negative">Rh Negative</option>
+        <option value="platelets_rich">Platelets Rich Blood</option>
+        <option value="wbc_rich">WBC Rich Blood</option>
+        <option value="normal_blood">Normal Blood</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="numOfBags">Number of Bags Estimated:</label>
+      <input type="number" id="numOfBags" name="numOfBags" required>
+
+      <label for="transfusionType">Blood Transfusion / Normal Blood:</label>
+      <select id="transfusionType" name="transfusionType">
+        <option value="transfusion">Blood Transfusion</option>
+        <option value="normal">Normal Blood Donation</option>
+      </select>
+
+      <label for="bloodGroup">Blood Group:</label>
+      <input type="text" id="bloodGroup" name="bloodGroup" required>
+
+      <label for="landmark">Landmark:</label>
+      <input type="text" id="landmark" name="landmark" required>
+
+      <label for="mobileNumber">Mobile Number (Other than Registered Number):</label>
+      <input type="tel" id="mobileNumber" name="mobileNumber" required>
+
+      <label for="dateOfCollection">Date of Collection:</label>
+      <input type="date" id="dateOfCollection" name="dateOfCollection" required>
+
+      <button type="button" onclick="submitOrder()">Submit Order</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

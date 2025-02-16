@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Your Blood Donation Score</h2>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    
+    // Get URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const weight = parseFloat(urlParams.get('weight'));
+    const height = parseFloat(urlParams.get('height'));
+    const systolicBp = parseFloat(urlParams.get('systolic_bp'));
+    const diastolicBp = parseFloat(urlParams.get('diastolic_bp'));
+    const heartRate = parseFloat(urlParams.get('heart_rate'));
+    const smoking = urlParams.has('smoking');
+    const alcohol = urlParams.has('alcohol');
+    const physicalActivity = urlParams.has('physical_activity');
+
+    // Scoring system
+    let score = 0;
+
+    // Weight & Height Score
+    if (weight >= 50 && height >= 150) {
+        score += 20;
+    } else if (weight >= 50 || height >= 150) {
+        score += 10;
+    } else {
+        score += 5;
+    }
+
+    // Blood Pressure Score
+    if (systolicBp >= 90 && systolicBp <= 120 && diastolicBp >= 60 && diastolicBp <= 80) {
+        score += 20;
+    } else if (systolicBp > 120 || diastolicBp > 80) {
+        score += 10;
+    } else {
+        score += 5;
+    }
+
+    // Heart Rate Score
+    if (heartRate >= 60 && heartRate <= 100) {
+        score += 15;
+    } else {
+        score += 5;
+    }
+
+    // Lifestyle Factors
+    if (!smoking) {
+        score += 15;
+    }
+    if (!alcohol) {
+        score += 15;
+    }
+    if (physicalActivity) {
+        score += 15;
+    }
+
+    // Display the score
+    document.getElementById('result').innerText = `Your blood donation score is: ${score}`;
+  </script>
+  <script src="script.js"></script>
+
+</body>
+</html>
